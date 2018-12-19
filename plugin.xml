@@ -1,0 +1,78 @@
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-admob-mediation-adcolony"
+        version="1.0.0">
+    <name>Admob Mediation Applovin Plugin</name>
+    <description>Cordova Admob Mediation Adcolony Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova, admob, mediation, adcolony</keywords>
+    <repo>https://github.com/mingz2013/cordova-plugin-admob-mediation-adcolony.git</repo>
+    <issue>https://github.com/mingz2013/cordova-plugin-admob-mediation-adcolony/issues</issue>
+
+
+    <!--<preference name="APPLOVIN_SDK_KEY" value=""/>-->
+
+    <js-module src="www/AdMobMediationAdcolony.js" name="AdMobMediationAdcolony">
+        <clobbers target="AdMobMediationAdcolony"/>
+    </js-module>
+    <!--<js-module src="www/AdMobInterface.js" name="AdMobInterface">-->
+        <!--<clobbers target="AdMobInterface"/>-->
+    <!--</js-module>-->
+
+    <dependency id="cordova-plugin-admob" url="https://github.com/mingz2013/cordova-plugin-admob"/>
+
+    <!-- android -->
+    <platform name="android">
+        <framework src="src/android/admob-mediation-adcolony.gradle" custom="true" type="gradleReference"/>
+
+        <!--<config-file target="res/xml/config.xml" parent="/*">-->
+            <!--<feature name="Device" >-->
+                <!--<param name="android-package" value="org.apache.cordova.device.Device"/>-->
+            <!--</feature>-->
+        <!--</config-file>-->
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.adcolony.sdk.AdColonyInterstitialActivity"
+                      android:configChanges="keyboardHidden|orientation|screenSize"
+                      android:hardwareAccelerated="true"/>
+
+            <activity android:name="com.adcolony.sdk.AdColonyAdViewActivity"
+                      android:configChanges="keyboardHidden|orientation|screenSize"
+                      android:hardwareAccelerated="true"/>
+
+
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.VIBRATE" />
+        </config-file>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AdMobMediationAdcolony">
+                <param name="android-package" value="me.mingz.cordova.admob.mediation.AdMobMediationAdcolonyPlugin"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/AdMobMediationAdcolonyPlugin.java" target-dir="src/me/mingz/cordova/admob/mediation" />
+
+
+    </platform>
+
+    <!-- ios -->
+    <!--<platform name="ios">-->
+        <!--<config-file target="config.xml" parent="/*">-->
+            <!--<feature name="Device">-->
+                <!--<param name="ios-package" value="CDVDevice"/>-->
+            <!--</feature>-->
+        <!--</config-file>-->
+
+        <!--<header-file src="src/ios/CDVDevice.h" />-->
+        <!--<source-file src="src/ios/CDVDevice.m" />-->
+    <!--</platform>-->
+
+
+
+
+
+</plugin>
