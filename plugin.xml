@@ -69,7 +69,7 @@
 
         <!--<header-file src="src/ios/CDVDevice.h" />-->
         <!--<source-file src="src/ios/CDVDevice.m" />-->
-        <framework src="GoogleMobileAdsMediationAdColony" type="podspec"/>
+        <framework src="GoogleMobileAdsMediationAdColony" type="podspec" spec="~> 3.3.5.0"/>
     </platform>
 
 
